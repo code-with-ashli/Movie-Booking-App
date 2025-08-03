@@ -18,6 +18,10 @@ class MovieService{
     static getMovieById(id){
         return Movie.findById(id);
     }
+
+    static async deleteMovie(id){
+        return await Movie.findByIdAndDelete(id);
+    }
 }
 
 module.exports = MovieService;

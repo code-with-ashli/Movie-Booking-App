@@ -12,7 +12,7 @@ router.get('/theatres', theatreController.getAllTheatres)
 router.get('/theatre/:id', theatreController.getTheaterById)
 router.post('/theatres', theatreController.createTheatre)
 // router.patch('/theatres/:id')
-// router.delete('/theatres/:id')
+router.delete('/theatres/:id', theatreController.deleteTheatreById)
 
 //halls
 // Theatre Halls
@@ -23,9 +23,9 @@ router.get(
 router.post('/theatres/halls', theatreController.createTheatreHall)
 
 //theatre hall movie mapping
-
 router.get('/shows/:showId', theatreController.getShowByMovieId) //in future make this public
 router.post('/show', theatreController.createShow)
+router.delete('/shows/:showId', theatreController.deleteShow)
   
 
 //movies
@@ -33,6 +33,6 @@ router.post('/show', theatreController.createShow)
 router.get('/movies/:id', movieController.getByMovieId)
 router.post('/movies', movieController.createMovie)
 // router.patch('/movies/:id')
-// router.delete('/movies/:id')
+router.delete('/movies/:id', movieController.deleteByMovieId)
 
 module.exports = router;

@@ -29,8 +29,19 @@ async function createMovie(req, res) {
     return res.status(201).json({status: 'success', data: movie})
 }
 
+async function deleteByMovieId(req, res) {
+    const movieId = req.params.id;
+    const movie = await MovieService.deleteMovie(movieId);
+
+    if(!movie) return res.status().json({status:'error', error: `Movie with ${movieId} is not found`})
+    
+    return res.json({ status: "Success", data: movie});
+    
+}
+
 module.exports = {
     getAllMovies,
     getByMovieId,
     createMovie,
+    deleteByMovieId
 }

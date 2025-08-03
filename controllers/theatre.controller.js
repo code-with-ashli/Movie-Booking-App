@@ -38,6 +38,36 @@ async function getTheaterById(req, res) {
     return res.json({ status: 'Success', data: theatre })
 }
 
+async function deleteTheatreById(req, res) {
+    const theatreId = req.params.id
+    const theatre = await TheatreService.deleteById(theatreId)
+
+    if (!theatre)
+        return res
+            .status(404)
+            .json({
+                status: 'error',
+                error: `Theatre with ${theatreId} is not found`,
+            })
+
+    return res.json({ status: 'Success', data: theatre })
+}
+
+async function deleteShow(req, res) {
+    const showId = req.params.id
+    const show = await TheatreService.deleteByShowId(showId)
+
+    if (!show)
+        return res
+            .status(404)
+            .json({
+                status: 'error',
+                error: `Theatre with ${showId} is not found`,
+            })
+
+    return res.json({ status: 'Success', data: show })
+}
+
 // Controller for halls
 async function getTheatreHallsByTheatreId(req, res) {
     const theatreId = req.params.theatreId
@@ -78,12 +108,15 @@ async function createShow(req, res) {
     return res.status(201).json({status: 'success', data: show});
 }
 
+
 module.exports = {
     getAllTheatres,
     createTheatre,
     getTheaterById,
+    deleteTheatreById,
     getTheatreHallsByTheatreId,
     createTheatreHall,
     getShowByMovieId,
     createShow,
+    deleteShow
 }

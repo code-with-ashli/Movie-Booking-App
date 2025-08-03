@@ -4,7 +4,7 @@ const threatreHallMovieMappingSchema = new Schema({
     movieId: {
         type: Schema.Types.ObjectId,
         required: true,
-        ref: 'movie',
+        ref: 'movies',
     },
     theatreHallId: {
         type: Schema.Types.ObjectId,
